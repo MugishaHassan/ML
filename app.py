@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
+from keras.models import load_model
+from keras.utils import img_to_array
 from PIL import Image
 
 # ── Page config ───────────────────────────────────────────────────────────────
@@ -146,7 +146,7 @@ if uploaded_file:
 
     # Preprocess — same as notebook
     img_resized = pil_img.resize((200, 200))
-    img_array = image.img_to_array(img_resized)
+    img_array = img_to_array(img_resized)
     img_array = np.expand_dims(img_array, axis=0)
 
     with st.spinner("Analysing..."):
